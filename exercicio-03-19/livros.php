@@ -1,8 +1,6 @@
 <?php
 
-    function get($idx) {
-        return $_GET[$idx];
-    }
+    include 'init.php';
 
     $usuario = get('usuario');
 
@@ -26,7 +24,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Livros</title>
+    <title><?= $title ?> - Livros</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
