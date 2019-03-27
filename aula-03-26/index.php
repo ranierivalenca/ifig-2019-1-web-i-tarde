@@ -2,6 +2,8 @@
 
     include 'init.php';
 
+    setcookie('data', '2019-03-26');
+
     $inputs = [
         'nome' => 'text',
         'sobrenome' => 'text',
@@ -34,12 +36,7 @@
         <input type="submit" value="Enviar">
     </form>
     <div class="users">
-        <h1>Livros dos usuários</h1>
-        <ul>
-            <?php foreach ($usuarios as $nome): ?>
-                <li><a href="livros.php?usuario=<?= $nome ?>"><?= $nome ?></a></li>
-            <?php endforeach ?>
-        </ul>
+        <a href="login.php"><h1>Livros dos usuários</h1></a>
     </div>
 </body>
 </html>

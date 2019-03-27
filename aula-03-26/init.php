@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 function get($idx) {
     return $_GET[$idx] ?? false;
 }

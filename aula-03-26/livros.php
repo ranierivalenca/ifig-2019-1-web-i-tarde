@@ -2,7 +2,10 @@
 
     include 'init.php';
 
-    $usuario = get('usuario');
+    $usuario = $_SESSION['usuario'];
+    if (!isset($_SESSION['logado']) || $_SESSION['logado'] == false) {
+        exit();
+    }
 
     $livrosFile = [];
     if (file_exists('livros.csv')) {
