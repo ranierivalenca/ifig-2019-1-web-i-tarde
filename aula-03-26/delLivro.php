@@ -1,8 +1,6 @@
 <?php
 
-function get($idx) {
-    return $_GET[$idx];
-}
+include 'init.php';
 
 $usuario = get('usuario');
 $id = get('id');

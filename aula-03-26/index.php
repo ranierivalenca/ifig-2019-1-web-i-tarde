@@ -1,4 +1,7 @@
 <?php
+
+    include 'init.php';
+
     $inputs = [
         'nome' => 'text',
         'sobrenome' => 'text',
@@ -20,7 +23,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Registro de Usuário</title>
+    <title><?= $title ?> -  Registro de Usuário</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
