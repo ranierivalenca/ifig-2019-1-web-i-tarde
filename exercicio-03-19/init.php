@@ -20,6 +20,6 @@ function juntar($arr) {
     return $s;
 }
 
-define('TITLE', 'Sistema de controle de livros v2.0');
+$title = 'Sistema de controle de livros v2.0';
 
 ?>
