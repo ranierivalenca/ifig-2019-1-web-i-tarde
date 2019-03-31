@@ -28,6 +28,12 @@ function login($name, $email) {
     $_SESSION['email'] = $email;
 }
 
+function logout() {
+    $_SESSION['logado'] = false;
+    unset($_SESSION['usuario']);
+    unset($_SESSION['email']);
+}
+
 function is_logged() {
     return $_SESSION['logado'] ?? false;
 }

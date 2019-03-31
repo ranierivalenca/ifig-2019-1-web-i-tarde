@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1 class="title">Livros de <?= $usuario ?></h1>
+    <h1 class="title">Livros de <?= $usuario ?> <span><a href="logout.php">Sair</a></span></h1>
     <table>
         <tr>
             <th>Livro</th>
