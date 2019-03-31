@@ -17,7 +17,7 @@
 <?php endif ?>
 
 <?php
-    $data = juntar([$nome, $sobrenome, $email, $senha]) . "\n";
+    $data = juntar([$nome, $sobrenome, $email, md5($senha)]) . "\n";
 
     // salva o dado no arquivo csv
     $handle = fopen('users.csv', 'a');
