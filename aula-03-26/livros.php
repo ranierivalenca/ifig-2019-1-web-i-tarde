@@ -2,8 +2,8 @@
 
     include 'init.php';
 
-    $usuario = $_SESSION['usuario'];
-    if (!isset($_SESSION['logado']) || $_SESSION['logado'] == false) {
+    $usuario = currentUser();
+    if (!is_logged()) {
         exit();
     }
 

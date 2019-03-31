@@ -9,8 +9,7 @@ $users = file('users.csv');
 foreach($users as $user) {
     $userData = explode(',', $user);
     if (trim($userData[2]) == $email && trim($userData[3]) == $senha) {
-        $_SESSION['logado'] = true;
-        $_SESSION['usuario'] = $userData[0];
+        login($userData[0]);
         break;
     }
 }
@@ -24,7 +23,7 @@ foreach($users as $user) {
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <?php if ($_SESSION['logado'] == true): ?>
+    <?php if (is_logged()): ?>
         Você está logado! <a href="livros.php">Clique aqui para acessar</a>
     <?php else: ?>
         Login ou senha incorreto. <a href="login.php">Clique para voltar</a>

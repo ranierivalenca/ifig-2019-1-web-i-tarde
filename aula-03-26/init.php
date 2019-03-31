@@ -22,6 +22,22 @@ function juntar($arr) {
     return $s;
 }
 
+function login($name) {
+    $_SESSION['logado'] = true;
+    $_SESSION['usuario'] = $name;
+}
+
+function is_logged() {
+    return $_SESSION['logado'] ?? false;
+}
+
+function currentUser() {
+    if (!is_logged()) {
+        return false;
+    }
+    return $_SESSION['usuario'] ?? false;
+}
+
 define('TITLE', 'Sistema de controle de livros v2.0');
 
 ?>
