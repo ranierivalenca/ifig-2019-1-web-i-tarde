@@ -2,8 +2,8 @@
 
 include 'init.php';
 
-$email = get('email');
-$senha = get('senha');
+$email = post('email');
+$senha = post('senha');
 
 $users = file('users.csv');
 foreach($users as $user) {

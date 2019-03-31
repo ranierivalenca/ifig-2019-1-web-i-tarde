@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form action="auth.php">
+    <form action="auth.php" method="POST">
         <input type="text" name="email" placeholder="Email">
         <input type="password" name="senha" placeholder="Senha">
         <input type="submit" value="Ok">
