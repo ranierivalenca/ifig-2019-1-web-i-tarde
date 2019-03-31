@@ -24,7 +24,7 @@
 <body>
     <div class="message">
         <h1>Livro cadastrado</h1>
-        <a href="livros.php?usuario=<?= $usuario ?>">Voltar</a>
+        <a href="livros.php">Voltar</a>
     </div>
 </body>
 </html>

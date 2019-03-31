@@ -45,7 +45,7 @@
                     <td><?= $livro['nome'] ?></td>
                     <td><?= $livro['autor'] ?></td>
                     <td>
-                        <a href="delLivro.php?usuario=<?= $usuario ?>&id=<?= $id ?>">Remover</a>
+                        <a href="delLivro.php?id=<?= $id ?>">Remover</a>
                     </td>
                 </tr>
             <?php endif ?>

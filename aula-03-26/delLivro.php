@@ -7,7 +7,6 @@ if (!is_logged()) {
     exit();
 }
 
-$usuario = get('usuario');
 $id = get('id');
 
 $livros = file('livros.csv');
@@ -30,7 +29,7 @@ fwrite($handle, $data);
 <body>
     <div class="message">
         <h1>Livro removido</h1>
-        <a href="livros.php?usuario=<?= $usuario ?>">Voltar</a>
+        <a href="livros.php">Voltar</a>
     </div>
 </body>
 </html>
