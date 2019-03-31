@@ -2,6 +2,10 @@
 
     include 'init.php';
 
+    if (!is_logged()) {
+        include 'forbidden.html';
+        exit();
+    }
 
     $nome = post('nome');
     $autor = post('autor');

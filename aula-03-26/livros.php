@@ -4,6 +4,7 @@
 
     $usuario = currentUser();
     if (!is_logged()) {
+        include 'forbidden.html';
         exit();
     }
 

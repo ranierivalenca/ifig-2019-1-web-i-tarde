@@ -2,6 +2,11 @@
 
 include 'init.php';
 
+if (!is_logged()) {
+    include 'forbidden.html';
+    exit();
+}
+
 $usuario = get('usuario');
 $id = get('id');
 
