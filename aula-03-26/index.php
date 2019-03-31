@@ -2,7 +2,7 @@
 
     include 'init.php';
 
-    setcookie('data', '2019-03-26');
+    // setcookie('data', '2019-03-26');
 
     $inputs = [
         'nome' => 'text',
