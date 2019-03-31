@@ -3,6 +3,7 @@
     include 'init.php';
 
     $usuario = currentUser();
+    $usuarioEmail = currentUserEmail();
     if (!is_logged()) {
         include 'forbidden.html';
         exit();
@@ -16,7 +17,7 @@
     foreach($livrosFile as $i => $livro) {
         $livroData = explode(',', $livro);
         $livros[$i] = [
-            'usuario' => $livroData[0],
+            'usuarioEmail' => $livroData[0],
             'nome' => $livroData[1],
             'autor' => $livroData[2]
         ];
@@ -40,7 +41,7 @@
             <th>ações</th>
         </tr>
         <?php foreach ($livros as $id => $livro): ?>
-            <?php if ($livro['usuario'] == $usuario): ?>
+            <?php if ($livro['usuarioEmail'] == $usuarioEmail): ?>
                 <tr>
                     <td><?= $livro['nome'] ?></td>
                     <td><?= $livro['autor'] ?></td>
@@ -54,7 +55,6 @@
     <form action="addLivro.php" method="POST">
         <input type="text" name="nome" placeholder="nome">
         <input type="text" name="autor" placeholder="autor">
-        <input type="hidden" name="usuario" value="<?= $usuario ?>">
         <input type="submit" value="Adicionar">
     </form>
     <div class="back">

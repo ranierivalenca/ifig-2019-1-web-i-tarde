@@ -9,9 +9,9 @@
 
     $nome = post('nome');
     $autor = post('autor');
-    $usuario = post('usuario');
+    $usuarioEmail = currentUserEmail();
 
-    $data = juntar([$usuario, $nome, $autor]) . "\n";
+    $data = juntar([$usuarioEmail, $nome, $autor]) . "\n";
 
     $handle = fopen('livros.csv', 'a');
     fwrite($handle, $data);
