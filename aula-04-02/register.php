@@ -1,5 +1,6 @@
 <?php
 
+    sleep(2);
     include 'init.php';
 
     $nome = post('nome');
@@ -22,17 +23,6 @@
     // salva o dado no arquivo csv
     $handle = fopen('users.csv', 'a');
     fwrite($handle, $data);
+
+    header('location: index.php?message=Usuário ' . $email . ' cadastrado');
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="message">
-        <h1>Usuário cadastrado</h1>
-        <a href="index.php">Voltar</a>
-    </div>
-</body>
-</html>

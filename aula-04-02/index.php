@@ -29,6 +29,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <?php if (get('message') !== false): ?>
+        <div class="message">
+            <?= get('message') ?>
+        </div>
+    <?php endif ?>
     <form action="register.php" method="POST">
         <?php foreach ($inputs as $name => $type): ?>
             <input type="<?= $type ?>" name="<?= $name ?>" placeholder="<?= $name ?>">
