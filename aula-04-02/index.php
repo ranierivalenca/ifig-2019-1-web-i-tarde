@@ -4,6 +4,10 @@
 
     // setcookie('data', '2019-03-26');
 
+    if (is_logged()) {
+        header('location: livros.php');
+    }
+
     $inputs = [
         'nome' => 'text',
         'sobrenome' => 'text',
