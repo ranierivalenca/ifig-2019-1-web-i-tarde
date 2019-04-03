@@ -12,10 +12,8 @@ $id = get('id');
 $livros = file('livros.csv');
 unset($livros[$id]);
 
-$data = '';
-foreach($livros as $livro) {
-    $data = $data . $livro;
-}
+$data = join('', $livros);
+
 $handle = fopen('livros.csv', 'w');
 fwrite($handle, $data);
 

@@ -11,15 +11,7 @@ function post($idx) {
 }
 
 function juntar($arr) {
-    $s = '';
-    foreach($arr as $i => $el) {
-        if ($i == sizeof($arr) - 1) {
-            $s = $s . $el;
-        } else {
-            $s = $s . $el . ',';
-        }
-    }
-    return $s;
+    return join(',', $arr);
 }
 
 function login($name, $email) {
