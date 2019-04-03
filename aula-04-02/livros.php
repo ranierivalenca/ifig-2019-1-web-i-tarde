@@ -13,15 +13,21 @@
     if (file_exists('livros.csv')) {
         $livrosFile = file('livros.csv');
     }
-    $livros = [];
-    foreach($livrosFile as $i => $livro) {
-        $livroData = explode(',', $livro);
-        $livros[$i] = [
+
+    function explodir($el) {
+        $livroData = explode(',', $el);
+        return [
             'usuarioEmail' => $livroData[0],
             'nome' => $livroData[1],
             'autor' => $livroData[2]
         ];
     }
+    $livros = array_map('explodir', $livrosFile);
+
+    function filtrar($el) {
+        return $el['usuarioEmail'] == currentUser();
+    }
+    $livros = array_filter($livros, 'filtrar');
 
 ?>
 
@@ -41,7 +47,6 @@
             <th>ações</th>
         </tr>
         <?php foreach ($livros as $id => $livro): ?>
-            <?php if ($livro['usuarioEmail'] == $usuarioEmail): ?>
                 <tr>
                     <td><?= $livro['nome'] ?></td>
                     <td><?= $livro['autor'] ?></td>
@@ -49,7 +54,6 @@
                         <a href="delLivro.php?id=<?= $id ?>">Remover</a>
                     </td>
                 </tr>
-            <?php endif ?>
         <?php endforeach ?>
     </table>
     <form action="addLivro.php" method="POST">
