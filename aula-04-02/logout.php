@@ -4,6 +4,6 @@ include 'init.php';
 
 logout();
 
-header('location: index.php');
+redirect('index.php');
 
 ?>

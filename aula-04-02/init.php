@@ -52,6 +52,11 @@ function currentUserEmail() {
     return $_SESSION['email'] ?? false;
 }
 
+function redirect($caminho) {
+    header('location: ' . $caminho);
+    exit();
+}
+
 define('TITLE', 'Sistema de controle de livros v2.0');
 
 ?>
