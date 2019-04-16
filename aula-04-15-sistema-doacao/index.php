@@ -50,6 +50,7 @@ $items = array_map(function($el) {
                     ?>
                     <td><?= $user[0] ?> (<?= $user[1] ?>)</td>
                     <td>
+                        <a href="moreInfo.php?id=<?= $id ?>">Mais info</a>
                         <?php if ($item['email'] == userEmail()): ?>
                             <a href="deleteItem.php?id=<?= $id ?>">Remover</a>
                         <?php endif ?>
