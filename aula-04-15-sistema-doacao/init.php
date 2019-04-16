@@ -3,6 +3,7 @@
 session_start();
 
 define('USERS_FILE', 'users.csv');
+define('ITEMS_FILE', 'items.csv');
 define('SEPARATOR', '///');
 define('TITLE', 'Sistema de Doação');
 
@@ -13,6 +14,7 @@ function login($userEmail, $pw) {
         list($email, $pw) = $exploded;
         return implode(SEPARATOR, [$email, $pw]);
     }, $data);
+
     if (in_array(join(SEPARATOR, [$userEmail, $pw]), $user_pw)) {
         $_SESSION['email'] = $userEmail;
         return true;
@@ -26,6 +28,13 @@ function logout() {
 
 function is_logged() {
     return isset($_SESSION['email']);
+}
+
+function userEmail() {
+    if (is_logged()) {
+        return $_SESSION['email'];
+    }
+    return false;
 }
 
 function redirect($url) {

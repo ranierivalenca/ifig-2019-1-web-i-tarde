@@ -26,7 +26,7 @@ $bairro = $_POST['bairro'] ?? '';
 <?php endif ?>
 
 <?php
-$data = join(SEPARATOR, [$email, $senha, $nome, $telefone, $cidade, $bairro]) . "\n";
+$data = join(SEPARATOR, [$email, sha1($senha), $nome, $telefone, $cidade, $bairro]) . "\n";
 $handle = fopen(USERS_FILE, 'a');
 fwrite($handle, $data);
 redirect('reg_login.php?mes_reg=Usuário registrado');
