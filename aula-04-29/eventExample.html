@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <style type="text/css">
+        .red{
+            background: red;
+        }
+
+        .green{
+            background: green;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <p id="lapis">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita a deserunt consequuntur sunt impedit veniam beatae reiciendis qui earum mollitia suscipit, quis! Quaerat officia maiores, at dolores tenetur numquam earum!
+    </p>
+    <p id="caneta" class="red" style="display: none;">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas assumenda vero, fugiat hic adipisci reprehenderit corporis, magni accusantium minima inventore odit sapiente nesciunt maiores, nihil culpa voluptates ad perspiciatis id.
+
+    </p>
+
+    <button id="local" style="position: absolute;">Tente, e falhe</button>
+    <script id="test">
+        var p = document.getElementById("lapis");
+        var p2 = document.getElementById("caneta");
+        var b = document.getElementById("local");
+        var frases = ['tenta, noob', 'não consegue, né moises?', 'vixe, chegou nem perto', 'ihhhh', 'vem tranquilo', 'se aperreie não', 'tente e falhe', 'deu ruim, num foi?'];
+
+        b.onmouseover = function(){
+            b.style.left = Math.random()*90 + "vw";
+            b.style.top = Math.random()*90 + "vh";
+            b.innerHTML = frases[Math.floor(Math.random() * frases.length)];
+        }
+
+        p.onmouseover = function(){
+            p.className = "red";
+            p2.style.display = "block";
+        }
+        p.onmouseout = function(){
+            p.className = "green";
+            p2.style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
