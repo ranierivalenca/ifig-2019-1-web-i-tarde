@@ -4,7 +4,7 @@ include_once 'users_functions.php';
 include_once 'categories_functions.php';
 
 function add_message($userId, $categoryId, $message) {
-    add_register([$userId, $categoryId, $message], MESSAGES_FILE);
+    add_register([$userId, $categoryId, $message, date('d/m/Y')], MESSAGES_FILE);
 }
 
 function del_message($id) {
@@ -18,12 +18,13 @@ function message_info($id, $register = false) {
     if ($register === false) {
         return false;
     }
-    list($userId, $categoryId, $message) = explode_by_separator($register);
+    list($userId, $categoryId, $message, $date) = explode_by_separator($register);
     return [
         'id' => $id,
         'user' => user_info($userId),
         'category' => category_info($categoryId),
-        'message' => $message
+        'message' => $message,
+        'date' => $date
     ];
 }
 
