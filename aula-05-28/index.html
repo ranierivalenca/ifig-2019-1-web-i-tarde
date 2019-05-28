@@ -12,6 +12,13 @@
 
     </div>
     <a href="#" id="open-btn2" class="open">Pode clicar aqui tbm</a>
+    <ul class="apagavel">
+        <li>Alexia Mumme <a href="">x</a></li>
+        <li>Roselia Lama <a href="">x</a></li>
+        <li>Virgina Hamamoto <a href="">x</a></li>
+        <li>Wendell Mofield <a href="">x</a></li>
+        <li>Shaun Herrold <a href="">x</a></li>
+    </ul>
     <script>
         // let open = document.getElementById('open-btn');
         // let open2 = document.getElementById('open-btn2');
@@ -32,6 +39,19 @@
                 $('#dialog').css('display', 'none');
             });
         }
+
+        open
+        .on('mouseover', function() {
+            $(this).css('font-weight', 'bold');
+        })
+        .on('mouseout', (evt) => {
+            $(evt.target).css('font-weight', 'normal');
+        });
+
+        $('.apagavel li a').on('click', function(evt) {
+            evt.preventDefault();
+            $(this).parent().remove();
+        });
 
         open.on('click', function(evt) {
             evt.preventDefault();
