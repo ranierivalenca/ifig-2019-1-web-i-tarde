@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="jquery-3.4.1.min.js"></script>
+    <style>
+        input {
+            display: block;
+            font-size: 2em;
+            padding: 0.2em;
+            margin: .1em;
+        }
+        input[type=submit] {
+            background: hsl(120, 80%, 80%);
+        }
+    </style>
+</head>
+<body>
+    <a href="http://google.com">Google</a>
+    <input type="tel" name="phone1" placeholder="Phone (ex: 88888888)" maxlength="11">
+    <input type="tel" name="phone2" placeholder="Phone (ex: 88888888)" maxlength="14">
+    <input type="submit">
+
+    <script>
+        let p1 = $('[name=phone1]');
+        let p2 = $('[name=phone2]');
+
+        p1
+        .on('blur', function() {
+            let tel = $(this).val();
+            if (tel.length != 10 && tel.length != 11) {
+                return;
+            }
+            let sizes = [2, 4, 4];
+            if (tel.length == 11) {
+                sizes[1] = 5;
+            }
+            let ddd = tel.substr(0, sizes[0]);
+            let part1 = tel.substr(2, sizes[1]);
+            let part2 = tel.substr(2 + sizes[1], sizes[2]);
+
+            let newTel = `(${ddd})${part1}-${part2}`;
+
+            $(this).val(newTel);
+        })
+        .on('focus', function() {
+            let tel = $(this).val();
+            tel = tel.replace('(', '')
+                     .replace(')', '')
+                     .replace('-', '');
+            $(this).val(tel).select();
+        })
+        .on('keyup', function() {
+            let tel = $(this).val();
+            tel = tel.replace(/[^0-9]/g, '');
+            $(this).val(tel);
+        });
+
+        p2.on('keyup', function() {
+            let tel = $(this).val();
+            tel = tel.replace(/[^0-9]/g, '');
+
+            let sizes = [2, 4, 4];
+            if (tel.length == 11) {
+                sizes[1] = 5;
+            }
+            let ddd = tel.substr(0, sizes[0]);
+            let part1 = tel.substr(2, sizes[1]);
+            let part2 = tel.substr(2 + sizes[1], sizes[2]);
+
+            let newTel = '';
+            if (ddd.length > 0) {
+                newTel += `(${ddd}`;
+            }
+            if (part1.length > 0) {
+                newTel += ')' + part1;
+            }
+            if (part2.length > 0) {
+                newTel += '-' + part2;
+            }
+            $(this).val(newTel);
+        });
+
+    </script>
+</body>
+</html>
