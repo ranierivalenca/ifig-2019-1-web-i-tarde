@@ -12,13 +12,14 @@
 
     </div>
     <a href="#" id="open-btn2" class="open">Pode clicar aqui tbm</a>
-    <ul class="apagavel">
+    <ul class="apagavel adicionavel">
         <li>Alexia Mumme <a href="">x</a></li>
         <li>Roselia Lama <a href="">x</a></li>
         <li>Virgina Hamamoto <a href="">x</a></li>
         <li>Wendell Mofield <a href="">x</a></li>
         <li>Shaun Herrold <a href="">x</a></li>
     </ul>
+    <a href="#" id="add-li">Adicionar elemento</a>
     <script>
         // let open = document.getElementById('open-btn');
         // let open2 = document.getElementById('open-btn2');
@@ -40,13 +41,20 @@
             });
         }
 
-        open
-        .on('mouseover', function() {
-            $(this).css('font-weight', 'bold');
-        })
-        .on('mouseout', (evt) => {
-            $(evt.target).css('font-weight', 'normal');
+        $('#add-li').on('click', (evt) => {
+            evt.preventDefault();
+            let name = prompt("qual o nome?");
+            let li = $(`<li>${name} <a href="">x</a></li>`); // li é um elemento do DOM
+            $('.adicionavel').append(li);
         });
+
+        open
+            .on('mouseover', function() {
+                $(this).css('font-weight', 'bold');
+            })
+            .on('mouseout', (evt) => {
+                $(evt.target).css('font-weight', 'normal');
+            });
 
         $('.apagavel li a').on('click', function(evt) {
             evt.preventDefault();
