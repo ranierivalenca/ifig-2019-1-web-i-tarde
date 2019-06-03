@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <a href="qualquer coisa" id="open-btn" class="open">Clique aqui</a>
+    <div id="dialog">
+
+    </div>
+    <a href="#" id="open-btn2" class="open">Pode clicar aqui tbm</a>
+    <ul class="apagavel">
+        <li>Alexia Mumme <a href="">x</a></li>
+        <li>Roselia Lama <a href="">x</a></li>
+        <li>Virgina Hamamoto <a href="">x</a></li>
+        <li>Wendell Mofield <a href="">x</a></li>
+        <li>Shaun Herrold <a href="">x</a></li>
+    </ul>
+    <script>
+        // let open = document.getElementById('open-btn');
+        // let open2 = document.getElementById('open-btn2');
+
+        // let fn = function(evt) {
+        //     evt.preventDefault();
+        //     alert('Hello world');
+        // };
+
+        // open.addEventListener('click', fn);
+        // open2.addEventListener('click', fn);
+
+        let open = $('.open');
+
+        function setCloseBtn() {
+            $('#close-btn').on('click', function(evt) {
+                evt.preventDefault();
+                $('#dialog').css('display', 'none');
+            });
+        }
+
+        open
+        .on('mouseover', function() {
+            $(this).css('font-weight', 'bold');
+        })
+        .on('mouseout', (evt) => {
+            $(evt.target).css('font-weight', 'normal');
+        });
+
+        $('.apagavel li a').on('click', function(evt) {
+            evt.preventDefault();
+            $(this).parent().remove();
+        });
+
+        open.on('click', function(evt) {
+            evt.preventDefault();
+
+            $.ajax({
+                url: "dialog.php",
+                success: function(moises) { //'moises' guarda o corpo do pacote de response
+                    $('#dialog').html(moises); // .html() é equivalente a alterar o innerHTML
+                    setCloseBtn();
+                    $('#dialog').css('display', 'block');
+                },
+                error: function(data) {
+                    alert('deu ruim, moisés');
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
