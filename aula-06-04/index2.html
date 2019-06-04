@@ -28,6 +28,7 @@
             function(evt) {
                 console.log(`removendo ${$(this).text()}...`);
                 evt.preventDefault();
+                // this == evt.target
                 $(this).parent().remove();
             }
         );

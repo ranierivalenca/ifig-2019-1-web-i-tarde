@@ -47,32 +47,47 @@
 
     <?php endif ?>
 
-    <?php foreach ($messages as $message): ?>
-        <?php $fromUser = is_logged() && $message['user']['id'] == currentUserId(); ?>
-        <div class="message <?= $fromUser ? 'from-user' : '' ?>">
-            <div class="category category-<?= $message['category']['id'] ?>">
-                <?= $message['category']['category'] ?>
-                <?php if ($fromUser): ?>
-                     <a href="removeMessage.php?id=<?= $message['id']; ?>" class="del" title="Remover mensagem">&times;</a>
-                <?php endif ?>
-            </div>
-            <div class="message-text"><?= $message['message'] ?></div>
-            <div class="author_date">
-                <div class="author">
-                    <?= $message['user']['name'] ?>
-                    <?php if (is_logged()): ?>
-                        <span>
-                            (<?= $message['user']['username'] ?>)
-                        </span>
+    <div id="messages">
+        <?php foreach ($messages as $message): ?>
+            <?php $fromUser = is_logged() && $message['user']['id'] == currentUserId(); ?>
+            <div class="message <?= $fromUser ? 'from-user' : '' ?>">
+                <div class="category category-<?= $message['category']['id'] ?>">
+                    <?= $message['category']['category'] ?>
+                    <?php if ($fromUser): ?>
+                         <a href="removeMessage.php?id=<?= $message['id']; ?>" class="del" title="Remover mensagem">&times;</a>
                     <?php endif ?>
                 </div>
-                <div class="date">
-                    <?= $message['date'] ?>
+                <div class="message-text"><?= $message['message'] ?></div>
+                <div class="author_date">
+                    <div class="author">
+                        <?= $message['user']['name'] ?>
+                        <?php if (is_logged()): ?>
+                            <span>
+                                (<?= $message['user']['username'] ?>)
+                            </span>
+                        <?php endif ?>
+                    </div>
+                    <div class="date">
+                        <?= $message['date'] ?>
+                    </div>
                 </div>
             </div>
-        </div>
-    <?php endforeach ?>
+        <?php endforeach ?>
+    </div>
     <script>
+        $('.new-message').on('submit', (evt) => {
+            evt.preventDefault();
+            let form = $(evt.target);
+            $.ajax({
+                url: form.attr('action'),
+                type: 'POST',
+                data: form.serialize(),
+                success: (response) => {
+                    form.trigger('reset');
+                    $('#messages').prepend(response)
+                }
+            });
+        });
         $('.del').on('click', (evt) => {
             evt.preventDefault();
             let uerreele = $(evt.target).attr('href');
