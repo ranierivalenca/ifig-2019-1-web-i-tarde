@@ -1,0 +1,25 @@
+#open-btn {
+
+}
+#dialog {
+    width: 80%;
+    height: 70%;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    background: hsl(0, 0%, 80%);
+    display: none;
+}
+.fade {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-color: hsla(0, 0%, 30%, 0.8);
+}
+
+.active {
+    background: red;
+}

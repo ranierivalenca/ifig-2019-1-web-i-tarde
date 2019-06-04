@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <ul id="lista">
+        <li><a href="#">Brittaney</a></li>
+        <li><a href="#">Terrell</a></li>
+        <li><a href="#">Rosina</a></li>
+    </ul>
+    <a href="#" id="add-li">Adicionar</a>
+    <script>
+        $('#add-li').on(
+            'click',
+            (evt) => {
+                evt.preventDefault();
+                let name = prompt("qual o nome?");
+                let li = $(`<li><a href="#">${name}</a></li>`); // li é um elemento do DOM
+                $('#lista').append(li);
+            }
+        );
+        $('#lista').on(
+            'click',
+            'li a', //seletor de filhos
+            function(evt) {
+                console.log(`removendo ${$(this).text()}...`);
+                evt.preventDefault();
+                $(this).parent().remove();
+            }
+        );
+    </script>
+</body>
+</html>
