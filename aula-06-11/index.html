@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .hide {
+            display: none;
+        }
+    </style>
+    <script src="jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <a href="" id="start">iniciar</a>
+    <a href="" id="stop">parar</a>
+    <h1>hello</h1>
+    <p class="hide">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto labore, facere tempore, corporis ipsa repudiandae reiciendis assumenda illo, soluta pariatur numquam aut id non, a! Adipisci doloremque possimus excepturi quidem.</p>
+    <!-- <ul></ul> -->
+    <div id="relogio"></div>
+    <script>
+        setTimeout(
+            () => {
+                $('p').removeClass('hide');
+            },
+            3000 // tempo em milissegundos
+        );
+        setTimeout(() => {
+            $('h1').addClass("hide");
+        }, 3000);
+
+        setInterval(() => {
+            let d = new Date();
+            let hora = `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
+            $('#relogio').html(hora);
+        }, 1000);
+
+        let i = 0;
+        $('#start').on('click', (evt) => {
+            evt.preventDefault();
+
+            clearInterval(i);
+            i = setInterval(
+                () => {
+                    // $('h1').toggleClass('hide');
+                    $('body').css('background', `hsl(${Math.random() * 360}, 100%, 90%)`);
+                },
+                1000
+            );
+        });
+        $('#stop').on('click', (evt) => {
+            evt.preventDefault();
+            clearInterval(i);
+        });
+        // let timeoutI = (k) => {
+        //     setTimeout(
+        //         function() {
+        //             $('ul').append($(`<li>${k}</li>`));
+        //         },
+        //         2000
+        //     );
+        // }
+        // for(var i = 0; i < 100; i++) {
+        //     timeoutI(i);
+        // }
+    </script>
+</body>
+</html>
