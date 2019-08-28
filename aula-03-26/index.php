@@ -4,6 +4,8 @@
 
     // setcookie('data', '2019-03-26');
 
+    //o Inputs vai armazenar as variaveis no formato array associativo.
+
     $inputs = [
         'nome' => 'text',
         'sobrenome' => 'text',
@@ -12,10 +14,10 @@
         'senha2' => 'password'
     ];
 
-    $usuariosFile = file('users.csv');
+    $usuariosFile = file('users.csv'); //aqui ele vai ler o arquivo csv.
     $usuarios = [];
     foreach ($usuariosFile as $usuario) {
-        $usuarioData = explode(',', $usuario);
+        $usuarioData = explode(',', $usuario); // vai separar o array inputs em partes.
         $nome = $usuarioData[0];
         $usuarios[] = $nome; // adiciona o elemento $nome ao final do array $usuarios
     }
